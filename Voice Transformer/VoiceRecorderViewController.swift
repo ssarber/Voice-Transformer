@@ -64,9 +64,28 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
-        //TODO: Step 1 --Save the recorded audio
-        
-        //TODO: Step 2 - Move to the next scene aka perform a segue
+        if(flag){
+            //TODO: Step 1 --Save the recorded audio
+            recordedAudio = RecordedAudio()
+            recordedAudio.filePathUrl = recorder.url
+            recordedAudio.title = recorder.url.lastPathComponent
+            
+            //TODO: Step 2 - Move to the next scene aka perform a segue
+            self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+        } else {
+            NSLog("Recording was not successful")
+            recordButton.enabled = true
+            stopButton.hidden = true
+        }
+
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "stopRecording") {
+            let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as PlaySoundsViewController
+            let data = sender as RecordedAudio
+            playSoundsVC.receivedAudio = data
+        }
     }
     
     @IBAction func stopRecording(sender: UIButton) {
