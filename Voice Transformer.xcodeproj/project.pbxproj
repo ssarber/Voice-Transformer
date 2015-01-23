@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B4EBF2AA1A6D5B2E007624A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EBF2A91A6D5B2E007624A4 /* AppDelegate.swift */; };
-		B4EBF2AC1A6D5B2E007624A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EBF2AB1A6D5B2E007624A4 /* ViewController.swift */; };
+		B4EBF2AC1A6D5B2E007624A4 /* VoiceRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EBF2AB1A6D5B2E007624A4 /* VoiceRecorderViewController.swift */; };
 		B4EBF2AF1A6D5B2E007624A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4EBF2AD1A6D5B2E007624A4 /* Main.storyboard */; };
 		B4EBF2B11A6D5B2E007624A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4EBF2B01A6D5B2E007624A4 /* Images.xcassets */; };
 		B4EBF2B41A6D5B2E007624A4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4EBF2B21A6D5B2E007624A4 /* LaunchScreen.xib */; };
 		B4EBF2C01A6D5B2E007624A4 /* Voice_TransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EBF2BF1A6D5B2E007624A4 /* Voice_TransformerTests.swift */; };
 		B4EBF2CA1A6DB05C007624A4 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EBF2C91A6DB05C007624A4 /* PlaySoundsViewController.swift */; };
 		B4EBF2D01A6DBC9B007624A4 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B4EBF2CF1A6DBC9B007624A4 /* movie_quote.mp3 */; };
+		B4EBF2D21A72130F007624A4 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EBF2D11A72130F007624A4 /* RecordedAudio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +32,7 @@
 		B4EBF2A41A6D5B2E007624A4 /* Voice Transformer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voice Transformer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4EBF2A81A6D5B2E007624A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4EBF2A91A6D5B2E007624A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B4EBF2AB1A6D5B2E007624A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B4EBF2AB1A6D5B2E007624A4 /* VoiceRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderViewController.swift; sourceTree = "<group>"; };
 		B4EBF2AE1A6D5B2E007624A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4EBF2B01A6D5B2E007624A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B4EBF2B31A6D5B2E007624A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -40,6 +41,7 @@
 		B4EBF2BF1A6D5B2E007624A4 /* Voice_TransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voice_TransformerTests.swift; sourceTree = "<group>"; };
 		B4EBF2C91A6DB05C007624A4 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
 		B4EBF2CF1A6DBC9B007624A4 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = movie_quote.mp3; path = ../movie_quote.mp3; sourceTree = "<group>"; };
+		B4EBF2D11A72130F007624A4 /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordedAudio.swift; path = ../RecordedAudio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B467E1671A7277EA005A397E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		B4EBF29B1A6D5B2E007624A4 = {
 			isa = PBXGroup;
 			children = (
@@ -81,8 +90,10 @@
 		B4EBF2A61A6D5B2E007624A4 /* Voice Transformer */ = {
 			isa = PBXGroup;
 			children = (
+				B4EBF2D11A72130F007624A4 /* RecordedAudio.swift */,
+				B467E1671A7277EA005A397E /* Models */,
 				B4EBF2A91A6D5B2E007624A4 /* AppDelegate.swift */,
-				B4EBF2AB1A6D5B2E007624A4 /* ViewController.swift */,
+				B4EBF2AB1A6D5B2E007624A4 /* VoiceRecorderViewController.swift */,
 				B4EBF2AD1A6D5B2E007624A4 /* Main.storyboard */,
 				B4EBF2C91A6DB05C007624A4 /* PlaySoundsViewController.swift */,
 				B4EBF2B01A6D5B2E007624A4 /* Images.xcassets */,
@@ -219,7 +230,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4EBF2AC1A6D5B2E007624A4 /* ViewController.swift in Sources */,
+				B4EBF2D21A72130F007624A4 /* RecordedAudio.swift in Sources */,
+				B4EBF2AC1A6D5B2E007624A4 /* VoiceRecorderViewController.swift in Sources */,
 				B4EBF2CA1A6DB05C007624A4 /* PlaySoundsViewController.swift in Sources */,
 				B4EBF2AA1A6D5B2E007624A4 /* AppDelegate.swift in Sources */,
 			);
@@ -413,6 +425,7 @@
 				B4EBF2C51A6D5B2E007624A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4EBF2C61A6D5B2E007624A4 /* Build configuration list for PBXNativeTarget "Voice TransformerTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +434,7 @@
 				B4EBF2C81A6D5B2E007624A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
