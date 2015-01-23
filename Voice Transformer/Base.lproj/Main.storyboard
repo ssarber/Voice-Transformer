@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FC4-SR-a10">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -58,12 +59,12 @@
                                 <exclude reference="Q2t-Pz-QJi"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="21h-rY-s7i"/>
-                                <exclude reference="VXC-eg-Wyi"/>
                                 <exclude reference="UH3-l3-Ajm"/>
                                 <exclude reference="XAL-SL-zAd"/>
-                                <exclude reference="I3B-uQ-yDV"/>
                                 <exclude reference="bt1-0B-u6G"/>
+                                <exclude reference="I3B-uQ-yDV"/>
+                                <exclude reference="21h-rY-s7i"/>
+                                <exclude reference="VXC-eg-Wyi"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -73,12 +74,12 @@
                                 <include reference="Q2t-Pz-QJi"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="21h-rY-s7i"/>
-                                <include reference="VXC-eg-Wyi"/>
                                 <include reference="UH3-l3-Ajm"/>
                                 <include reference="XAL-SL-zAd"/>
-                                <include reference="I3B-uQ-yDV"/>
                                 <include reference="bt1-0B-u6G"/>
+                                <include reference="I3B-uQ-yDV"/>
+                                <include reference="21h-rY-s7i"/>
+                                <include reference="VXC-eg-Wyi"/>
                             </mask>
                         </variation>
                     </view>
@@ -103,6 +104,7 @@
                         <viewControllerLayoutGuide type="bottom" id="3o3-D2-W6b"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BJs-Pe-ZAh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bm6-i8-I8l">
@@ -128,11 +130,17 @@
                                 <state key="normal" backgroundImage="stop">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="177" y="516" width="46" height="46"/>
-                                </variation>
                                 <connections>
                                     <action selector="stopPlay:" destination="mgh-xt-XEK" eventType="touchUpInside" id="5yj-mz-jOV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FL-cA-KdF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="chipmunk">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playChipmunkAudio:" destination="mgh-xt-XEK" eventType="touchUpInside" id="n9p-Ld-ye1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -142,19 +150,26 @@
                             <constraint firstAttribute="centerX" secondItem="3qc-zZ-2RL" secondAttribute="centerX" id="9rY-Df-5TO"/>
                             <constraint firstItem="FIm-QS-1NY" firstAttribute="top" secondItem="FrC-l7-AIC" secondAttribute="bottom" constant="27" id="GCh-f0-vqn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FIm-QS-1NY" secondAttribute="trailing" constant="15" id="LwM-cv-gZL"/>
+                            <constraint firstItem="2FL-cA-KdF" firstAttribute="leading" secondItem="BJs-Pe-ZAh" secondAttribute="leadingMargin" constant="15" id="SZk-FT-SzJ"/>
                             <constraint firstItem="Bm6-i8-I8l" firstAttribute="top" secondItem="FrC-l7-AIC" secondAttribute="bottom" constant="27" id="YNa-r0-6VJ"/>
+                            <constraint firstItem="2FL-cA-KdF" firstAttribute="top" secondItem="Bm6-i8-I8l" secondAttribute="bottom" constant="71" id="dAY-7v-Lve"/>
                             <constraint firstAttribute="centerX" secondItem="3qc-zZ-2RL" secondAttribute="centerX" id="g81-yj-5eg"/>
                             <constraint firstItem="3o3-D2-W6b" firstAttribute="top" secondItem="3qc-zZ-2RL" secondAttribute="bottom" constant="38" id="m9v-tB-dlQ"/>
+                            <constraint firstItem="2FL-cA-KdF" firstAttribute="top" secondItem="FrC-l7-AIC" secondAttribute="bottom" constant="198" id="sZf-zk-3J6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Bm6-i8-I8l"/>
                                 <exclude reference="FIm-QS-1NY"/>
                                 <exclude reference="3qc-zZ-2RL"/>
+                                <exclude reference="2FL-cA-KdF"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="7KL-4p-h91"/>
                                 <exclude reference="YNa-r0-6VJ"/>
+                                <exclude reference="SZk-FT-SzJ"/>
+                                <exclude reference="dAY-7v-Lve"/>
+                                <exclude reference="sZf-zk-3J6"/>
                                 <exclude reference="GCh-f0-vqn"/>
                                 <exclude reference="LwM-cv-gZL"/>
                                 <exclude reference="9rY-Df-5TO"/>
@@ -167,10 +182,14 @@
                                 <include reference="Bm6-i8-I8l"/>
                                 <include reference="FIm-QS-1NY"/>
                                 <include reference="3qc-zZ-2RL"/>
+                                <include reference="2FL-cA-KdF"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="7KL-4p-h91"/>
                                 <include reference="YNa-r0-6VJ"/>
+                                <include reference="SZk-FT-SzJ"/>
+                                <include reference="dAY-7v-Lve"/>
+                                <include reference="sZf-zk-3J6"/>
                                 <include reference="GCh-f0-vqn"/>
                                 <include reference="LwM-cv-gZL"/>
                                 <include reference="9rY-Df-5TO"/>
@@ -204,6 +223,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chipmunk" width="100" height="100"/>
         <image name="fast" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>
