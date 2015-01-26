@@ -12,6 +12,7 @@ import AVFoundation
 class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
 
 
+    @IBOutlet weak var tapToRecord: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var recordingInProgress: UILabel!
     @IBOutlet weak var stopButton: UIButton!
@@ -31,12 +32,14 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     override func viewWillAppear(animated: Bool) {
+        tapToRecord.hidden = false
         recordButton.enabled = true
         stopButton.hidden = true
 
     }
 
     @IBAction func recordAudio(sender: UIButton) {
+        tapToRecord.hidden = true
         recordButton.enabled = false
         stopButton.hidden = false
         recordingInProgress.hidden = false
@@ -65,12 +68,11 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if(flag){
-            //TODO: Step 1 --Save the recorded audio
-            recordedAudio = RecordedAudio()
-            recordedAudio.filePathUrl = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
-            
-            //TODO: Step 2 - Move to the next scene aka perform a segue
+            // Step 1 --Save the recorded audio
+            // Calling constructor here
+            recordedAudio = RecordedAudio(filePath: recorder.url, audioTitle:recorder.url.lastPathComponent)
+          
+            // Step 2 - Move to the next scene aka perform a segue
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         } else {
             NSLog("Recording was not successful")

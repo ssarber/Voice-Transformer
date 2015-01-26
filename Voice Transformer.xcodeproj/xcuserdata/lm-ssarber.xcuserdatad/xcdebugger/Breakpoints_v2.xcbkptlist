@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Voice Transformer/VoiceRecorderViewController.swift"
-            timestampString = "443710322.46493"
+            timestampString = "443894161.642392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "audioRecorderDidFinishRecording(_:successfully:)"
             landmarkType = "5">
          </BreakpointContent>
