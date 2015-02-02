@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FC4-SR-a10">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FC4-SR-a10">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -47,9 +47,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="146" y="353" width="109" height="21"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -72,15 +69,15 @@
                                 <exclude reference="zOX-hw-2m3"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="UH3-l3-Ajm"/>
+                                <exclude reference="XAL-SL-zAd"/>
+                                <exclude reference="bt1-0B-u6G"/>
+                                <exclude reference="35H-kV-06h"/>
+                                <exclude reference="Nlm-IW-InH"/>
+                                <exclude reference="I3B-uQ-yDV"/>
                                 <exclude reference="21h-rY-s7i"/>
                                 <exclude reference="VXC-eg-Wyi"/>
                                 <exclude reference="c14-T1-Se7"/>
-                                <exclude reference="35H-kV-06h"/>
-                                <exclude reference="Nlm-IW-InH"/>
-                                <exclude reference="UH3-l3-Ajm"/>
-                                <exclude reference="XAL-SL-zAd"/>
-                                <exclude reference="I3B-uQ-yDV"/>
-                                <exclude reference="bt1-0B-u6G"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -91,15 +88,15 @@
                                 <include reference="zOX-hw-2m3"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="UH3-l3-Ajm"/>
+                                <include reference="XAL-SL-zAd"/>
+                                <include reference="bt1-0B-u6G"/>
+                                <include reference="35H-kV-06h"/>
+                                <include reference="Nlm-IW-InH"/>
+                                <include reference="I3B-uQ-yDV"/>
                                 <include reference="21h-rY-s7i"/>
                                 <include reference="VXC-eg-Wyi"/>
                                 <include reference="c14-T1-Se7"/>
-                                <include reference="35H-kV-06h"/>
-                                <include reference="Nlm-IW-InH"/>
-                                <include reference="UH3-l3-Ajm"/>
-                                <include reference="XAL-SL-zAd"/>
-                                <include reference="I3B-uQ-yDV"/>
-                                <include reference="bt1-0B-u6G"/>
                             </mask>
                         </variation>
                     </view>
@@ -173,6 +170,30 @@
                                     <action selector="playDarthvaderAudio:" destination="mgh-xt-XEK" eventType="touchUpInside" id="xtm-fo-ebR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uL-zl-74u">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Wet Cave">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="58" y="428" width="66" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playWetCave:" destination="mgh-xt-XEK" eventType="touchUpInside" id="f9Y-s6-wES"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLT-oh-cul">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Digreridoo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="285" y="428" width="72" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playDigreridoo:" destination="mgh-xt-XEK" eventType="touchUpInside" id="Vzn-aS-sCh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -196,6 +217,8 @@
                                 <exclude reference="3qc-zZ-2RL"/>
                                 <exclude reference="2FL-cA-KdF"/>
                                 <exclude reference="jpS-Gy-f59"/>
+                                <exclude reference="5uL-zl-74u"/>
+                                <exclude reference="RLT-oh-cul"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="m9v-tB-dlQ"/>
@@ -219,6 +242,8 @@
                                 <include reference="3qc-zZ-2RL"/>
                                 <include reference="2FL-cA-KdF"/>
                                 <include reference="jpS-Gy-f59"/>
+                                <include reference="5uL-zl-74u"/>
+                                <include reference="RLT-oh-cul"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="m9v-tB-dlQ"/>
