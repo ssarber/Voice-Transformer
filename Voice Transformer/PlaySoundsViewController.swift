@@ -11,7 +11,7 @@ import AVFoundation
 
 
 
-class PlaySoundsViewController: UIViewController {
+@IBDesignable class PlaySoundsViewController: UIViewController {
 
     var audioEngine = AVAudioEngine()!
     var audioPlayer:AVAudioPlayer!
@@ -48,6 +48,38 @@ class PlaySoundsViewController: UIViewController {
         playAudioWithVariablePitch(-1000)
     }
     
+//????????????
+    @IBAction func experiment(sender: UIButton) {
+        
+        audioPlayer.stop()
+        stopAndResetAudioEngine()
+        
+        var audioPlayerNode = AVAudioPlayerNode()
+        
+        var unitDistortion = AVAudioUnitDistortion()
+        unitDistortion.loadFactoryPreset(AVAudioUnitDistortionPreset.SpeechWaves)
+        
+        audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attachNode(unitDistortion)
+        
+        var mixerNode = audioEngine.mainMixerNode
+        
+        audioEngine.connect(audioPlayerNode, to: unitDistortion, format: audioFile.processingFormat)
+        
+        audioEngine.connect(unitDistortion, to: mixerNode, format: audioFile.processingFormat)
+        
+        audioEngine.connect(mixerNode, to: audioEngine.outputNode, format: audioFile.processingFormat)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        
+        audioEngine.startAndReturnError(nil)
+        audioPlayerNode.play()
+        
+    }
+    
+/////////////////////////////////////
+    
+    
     func playAudioWithVariablePitch(pitch: Float) {
         audioPlayer.stop()
         stopAndResetAudioEngine()
@@ -71,6 +103,7 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func stopPlay(sender: UIButton) {
         audioPlayer.stop()
+        stopAndResetAudioEngine()
     }
     
     @IBAction func playWetCave(sender: UIButton) {

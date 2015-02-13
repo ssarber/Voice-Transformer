@@ -194,6 +194,18 @@
                                     <action selector="playDigreridoo:" destination="mgh-xt-XEK" eventType="touchUpInside" id="Vzn-aS-sCh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCV-fJ-jZ8">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Experiment">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="58" y="477" width="78" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="experiment:" destination="mgh-xt-XEK" eventType="touchUpInside" id="psj-sX-9HB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -219,6 +231,7 @@
                                 <exclude reference="jpS-Gy-f59"/>
                                 <exclude reference="5uL-zl-74u"/>
                                 <exclude reference="RLT-oh-cul"/>
+                                <exclude reference="UCV-fJ-jZ8"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="m9v-tB-dlQ"/>
@@ -244,6 +257,7 @@
                                 <include reference="jpS-Gy-f59"/>
                                 <include reference="5uL-zl-74u"/>
                                 <include reference="RLT-oh-cul"/>
+                                <include reference="UCV-fJ-jZ8"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="m9v-tB-dlQ"/>
