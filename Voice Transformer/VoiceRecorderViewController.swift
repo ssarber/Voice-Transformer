@@ -11,7 +11,6 @@ import AVFoundation
 
 class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
 
-
     @IBOutlet weak var tapToRecord: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var recordingInProgress: UILabel!
@@ -44,8 +43,7 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.hidden = false
         recordingInProgress.hidden = false
         
-        //Inside func recordAudio(sender: UIButton)
-        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         
         let currentDateTime = NSDate()
         let formatter = NSDateFormatter()
@@ -56,7 +54,10 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         println(filePath)
         
         var session = AVAudioSession.sharedInstance()
-        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+        
+        // Direct the sound to speakers instead of headphones
+        session.setCategory(AVAudioSessionCategoryPlayAndRecord,
+            withOptions: AVAudioSessionCategoryOptions.DefaultToSpeaker, error: nil)
         
         audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
         audioRecorder.delegate = self
@@ -84,8 +85,8 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "stopRecording") {
-            let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as PlaySoundsViewController
-            let data = sender as RecordedAudio
+            let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
+            let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
         }
     }

@@ -10,7 +10,6 @@ import UIKit
 import AVFoundation
 
 
-
 @IBDesignable class PlaySoundsViewController: UIViewController {
 
     var audioEngine = AVAudioEngine()!
@@ -48,7 +47,7 @@ import AVFoundation
         playAudioWithVariablePitch(-1000)
     }
     
-//????????????
+    // Experimental sound -- Work in Progress!
     @IBAction func experiment(sender: UIButton) {
         
         audioPlayer.stop()
@@ -76,9 +75,6 @@ import AVFoundation
         audioPlayerNode.play()
         
     }
-    
-/////////////////////////////////////
-    
     
     func playAudioWithVariablePitch(pitch: Float) {
         audioPlayer.stop()
@@ -150,6 +146,7 @@ import AVFoundation
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         
         audioEngine.startAndReturnError(nil)
+        
         audioPlayerNode.play()
     }
     
@@ -167,14 +164,5 @@ import AVFoundation
             audioEngine.stop()
             audioEngine.reset()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
