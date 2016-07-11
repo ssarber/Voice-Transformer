@@ -43,7 +43,7 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.hidden = false
         recordingInProgress.hidden = false
         
-        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
         
         let currentDateTime = NSDate()
         let formatter = NSDateFormatter()
@@ -51,15 +51,19 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         let recordingName = formatter.stringFromDate(currentDateTime)+".wav"
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
-        println(filePath)
+        print(filePath)
         
         var session = AVAudioSession.sharedInstance()
         
-        // Direct the sound to speakers instead of headphones
-        session.setCategory(AVAudioSessionCategoryPlayAndRecord,
-            withOptions: AVAudioSessionCategoryOptions.DefaultToSpeaker, error: nil)
+        do {
+            // Direct the sound to speakers instead of headphones
+            try session.setCategory(AVAudioSessionCategoryPlayAndRecord,
+                withOptions: AVAudioSessionCategoryOptions.DefaultToSpeaker)
+        } catch _ {
+        }
         
-        audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
+        var emptyDic = [String: String]()
+        audioRecorder = try? AVAudioRecorder(URL: filePath!, settings: emptyDic)
         audioRecorder.delegate = self
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
@@ -67,7 +71,7 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
         
     }
     
-    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
+    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if(flag){
             // Step 1 --Save the recorded audio
             // Calling constructor here
@@ -94,8 +98,11 @@ class VoiceRecorderViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func stopRecording(sender: UIButton) {
         recordingInProgress.hidden = true
         audioRecorder.stop()
-        var audioSession = AVAudioSession.sharedInstance()
-        audioSession.setActive(false, error: nil)
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(false)
+        } catch _ {
+        }
     }
 }
 

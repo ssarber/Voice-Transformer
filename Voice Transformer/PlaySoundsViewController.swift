@@ -12,7 +12,7 @@ import AVFoundation
 
 @IBDesignable class PlaySoundsViewController: UIViewController {
 
-    var audioEngine = AVAudioEngine()!
+    var audioEngine = AVAudioEngine()
     var audioPlayer:AVAudioPlayer!
     var receivedAudio:RecordedAudio!
     var audioFile:AVAudioFile!
@@ -20,9 +20,14 @@ import AVFoundation
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
+        audioPlayer = try? AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
         audioPlayer.enableRate = true
-        audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
+        audioFile = try? AVAudioFile(forReading: receivedAudio.filePathUrl)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                selector: #selector(stopAndResetAudioEngine),
+                                name: AVAudioEngineConfigurationChangeNotification,
+                                object: audioEngine)
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,15 +58,15 @@ import AVFoundation
         audioPlayer.stop()
         stopAndResetAudioEngine()
         
-        var audioPlayerNode = AVAudioPlayerNode()
+        let audioPlayerNode = AVAudioPlayerNode()
         
-        var unitDistortion = AVAudioUnitDistortion()
+        let unitDistortion = AVAudioUnitDistortion()
         unitDistortion.loadFactoryPreset(AVAudioUnitDistortionPreset.SpeechWaves)
         
         audioEngine.attachNode(audioPlayerNode)
         audioEngine.attachNode(unitDistortion)
         
-        var mixerNode = audioEngine.mainMixerNode
+        let mixerNode = audioEngine.mainMixerNode
         
         audioEngine.connect(audioPlayerNode, to: unitDistortion, format: audioFile.processingFormat)
         
@@ -71,8 +76,11 @@ import AVFoundation
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         
-        audioEngine.startAndReturnError(nil)
-        audioPlayerNode.play()
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+            audioPlayerNode.play()
+        } catch _ {}
         
     }
     
@@ -80,10 +88,10 @@ import AVFoundation
         audioPlayer.stop()
         stopAndResetAudioEngine()
         
-        var audioPlayerNode = AVAudioPlayerNode()
+        let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         
-        var changePitchEffect = AVAudioUnitTimePitch()
+        let changePitchEffect = AVAudioUnitTimePitch()
         changePitchEffect.pitch = pitch
 
         audioEngine.attachNode(changePitchEffect)
@@ -91,10 +99,13 @@ import AVFoundation
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        audioEngine.startAndReturnError(nil)
-        audioPlayerNode.rate = 1.5
-        audioPlayerNode.play()
-
+        
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+            audioPlayerNode.rate = 1.5
+            audioPlayerNode.play()
+        } catch _ {}
     }
     
     @IBAction func stopPlay(sender: UIButton) {
@@ -106,11 +117,11 @@ import AVFoundation
         audioPlayer.stop()
         stopAndResetAudioEngine()
         
-        var audioPlayerNode = AVAudioPlayerNode()
+        let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         
         
-        var reverbEffect = AVAudioUnitReverb()
+        let reverbEffect = AVAudioUnitReverb()
         reverbEffect.wetDryMix = 100
         
         audioEngine.attachNode(reverbEffect)
@@ -118,24 +129,26 @@ import AVFoundation
         audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        audioEngine.startAndReturnError(nil)
-
-        audioPlayerNode.play()
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+            audioPlayerNode.play()
+        } catch _ {}
     }
     
     @IBAction func playDigreridoo(sender: UIButton) {
         audioPlayer.stop()
         stopAndResetAudioEngine()
         
-        var audioPlayerNode = AVAudioPlayerNode()
+        let audioPlayerNode = AVAudioPlayerNode()
         
-        var unitDistortion = AVAudioUnitDistortion()
+        let unitDistortion = AVAudioUnitDistortion()
         unitDistortion.loadFactoryPreset(AVAudioUnitDistortionPreset.SpeechGoldenPi)
         
         audioEngine.attachNode(audioPlayerNode)
         audioEngine.attachNode(unitDistortion)
         
-        var mixerNode = audioEngine.mainMixerNode
+        let mixerNode = audioEngine.mainMixerNode
         
         audioEngine.connect(audioPlayerNode, to: unitDistortion, format: audioFile.processingFormat)
         
@@ -145,13 +158,15 @@ import AVFoundation
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         
-        audioEngine.startAndReturnError(nil)
+        do {
+            try audioEngine.start()
+            audioPlayerNode.play()
+        } catch _ {}
         
         audioPlayerNode.play()
     }
     
-    
-    
+
     func playSound(rate: Float) {
         audioPlayer.stop()
         audioPlayer.prepareToPlay()
